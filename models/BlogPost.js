@@ -5,17 +5,29 @@
  * no singular. Outra propriedade importante aqui no model é a tableName, pois, ela
  * representa realmente como está descrito sua tabela no banco de Dados e faz 
  * o mapeamento a partir dessa referência
+ *    hasOne (tem um)
+      belongsTo (pertence a)
+      hasMany (tem muitos)
+      belongsToMany (pertence a muitos)
  */
   module.exports = (sequelize, DataTypes) => {
-    sequelize.define(
-      'BlogPost',
-      {
+    const BlogPost = sequelize.define('BlogPost', {
         id: { type: DataTypes.INTEGER, primaryKey: true },
         title: DataTypes.STRING,
         content: DataTypes.STRING,
         createdAt: { type: DataTypes.DATE, field: 'published' },
         updatedAt: { type: DataTypes.DATE, field: 'updated' },  
       },
-      { timestamps: false, tableName: 'BlogPosts' },
-    );
+      { timestamps: false, tableName: 'BlogPosts' });
+      
+    // 1 (UM) [Usuário] POSSUI muitos POSTS, porém
+    // 1 (UM) [POST ]   PERTENCE à 1(UM) USUÁRIO
+    BlogPost.associate = (models) => {
+      BlogPost.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'user',
+      });
+    };
+  
+    return BlogPost;
   };
