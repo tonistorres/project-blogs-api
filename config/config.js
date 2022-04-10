@@ -1,3 +1,4 @@
+// fonte: https://www.luiztools.com.br/post/tutorial-de-migrations-com-nodejs-e-sequelize/
 require('dotenv').config();
 
 module.exports = {
