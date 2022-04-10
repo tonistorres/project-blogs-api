@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       image: DataTypes.STRING,
-      userId: { type: DataTypes.INTEGER, foreignKey: true },
+      
     },
     {
       timestamps: false,
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     // 1 (UM) [POST ]   PERTENCE à 1(UM) USUÁRIO
   User.associate = (models) => {
     User.hasMany(models.BlogPost,
-      { foreignKey: 'userId', as: 'BlogPost' });
+      { foreignKey: 'userId', as: 'BlogPosts' });
     };
   return User;
 };

@@ -8,7 +8,7 @@
  */
 
 module.exports = (sequelize, DataTypes) => {
-    sequelize.define(
+const Category = sequelize.define(
       'Category',
       {
         id: {
@@ -22,4 +22,5 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'Categories',
       },
     );
+    return Category;
   };

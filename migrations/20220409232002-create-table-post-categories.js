@@ -9,21 +9,23 @@ a duas tabelas distintas (BlogPosts e Categories)
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('PostsCategories', {
-      postId: { type: Sequelize.INTEGER, primaryKey: true,
+      postId: {
+         type: Sequelize.INTEGER,
         references: {
-          model: 'BlogPosts',
+          model: 'User',
           key: 'id',
         },
-        onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
+        primaryKey:true,
       },
-      categoryId: { type: Sequelize.INTEGER, primaryKey: true,
+      categoryId: { 
+        type: Sequelize.INTEGER,
         references: {
-          model: 'Categories',
+          model: 'Category',
           key: 'id',
         },
-        onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
+        primaryKey:true,
       },
     });
   },

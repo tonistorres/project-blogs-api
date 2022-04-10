@@ -17,6 +17,7 @@
         content: DataTypes.STRING,
         createdAt: { type: DataTypes.DATE, field: 'published' },
         updatedAt: { type: DataTypes.DATE, field: 'updated' },  
+        userId: { type: DataTypes.INTEGER, primaryKey: true },
       },
       { timestamps: false, tableName: 'BlogPosts' });
       
@@ -27,7 +28,6 @@
         foreignKey: 'userId',
         as: 'user',
       });
-    };
-  
-    return BlogPost;
+    };  
+    return BlogPost;  
   };
