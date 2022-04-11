@@ -10,25 +10,25 @@
       hasMany (tem muitos)
       belongsToMany (pertence a muitos) 
  */
-module.exports = (sequelize, _DataTypes) => {
-  const PostCategory = sequelize.define('PostCategory', {},
-    { timestamps: false, tableName: 'PostsCategories' });
-
-    PostCategory.associate = (models) => {
-      // 1(UM) Category PERTENCE A MUITOS PostCategory
-      models.Category.belongsToMany(models.BlogPost, {
-        as: 'BlogPosts',
-        through: PostCategory,
-        foreignKey: 'categoryId',
-        otherKey: 'postId',
-      });
-      // 1(UM) BlogPost PERTENCE A MUITOS PostCategory
-      models.BlogPost.belongsToMany(models.Category, {
-        as: 'categories',
-        through: PostCategory,
-        foreignKey: 'postId',
-        otherKey: 'categoryId',
-      });
-    };
-    return PostCategory;
-};
+      module.exports = (sequelize, _DataTypes) => {
+        const PostCategory = sequelize.define('PostCategory', {},
+          { timestamps: false, tableName: 'PostsCategories' });
+      
+          PostCategory.associate = (models) => {
+            // 1(UM) Category PERTENCE A MUITOS PostCategory
+            models.Category.belongsToMany(models.BlogPost, {
+              as: 'BlogPosts',
+              through: PostCategory,
+              foreignKey: 'categoryId',
+              otherKey: 'postId',
+            });
+            // 1(UM) BlogPost PERTENCE A MUITOS PostCategory
+            models.BlogPost.belongsToMany(models.Category, {
+              as: 'categories',
+              through: PostCategory,
+              foreignKey: 'postId',
+              otherKey: 'categoryId',
+            });
+          };
+          return PostCategory;
+      };
