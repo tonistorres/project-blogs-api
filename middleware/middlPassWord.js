@@ -1,7 +1,7 @@
 const checkPassWord = (req, res, next) => {
 try {
     const { password } = req.body;
-if (!password) {
+if (password === undefined) {
 return res.status(400).json({ message: '"password" is required' });
 }
     

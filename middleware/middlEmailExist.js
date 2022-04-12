@@ -4,10 +4,8 @@ function validateEmail(email) {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
 }
-// findOne -> Busque um único registro o primeiro registro que encontrar
 const checkEmail = async (req, res, next) => {
     const { email } = req.body;
-    
     if (email === undefined) {
         return res.status(400).json({ message: '"email" is required' });
     }
@@ -16,7 +14,6 @@ const checkEmail = async (req, res, next) => {
     if (user) {
         return res.status(409).json({ message: 'User already registered' });
     }
-    
     const resultValidete = validateEmail(email);
     if (!resultValidete) {
         return res.status(400).json({ message: '"email" must be a valid email' });
