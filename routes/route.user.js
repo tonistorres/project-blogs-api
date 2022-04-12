@@ -10,6 +10,7 @@ const router = express.Router();
 router
 
 .get('/', Authorization, UserController.getAllUserController)
+.get('/:id', Authorization, UserController.getByIdUserController)
 
 .post('/',
  checkEmail,

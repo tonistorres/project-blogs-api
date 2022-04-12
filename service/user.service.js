@@ -7,6 +7,13 @@ const getAllServiceUser = async () => {
   return users;
 };
 
+const getByIdUserService = async (requisicao) => {
+  const { id } = requisicao;
+  const idreq = +id;
+  const user = await User.findOne({ where: { id: idreq } });
+  return user; 
+};
+
 const createServiceUser = async (user) => {
        try {
        const created = await User.create(user);    
@@ -37,4 +44,5 @@ module.exports = {
   createServiceUser,
   getUserLoginService,
   getAllServiceUser,
+  getByIdUserService,
 };

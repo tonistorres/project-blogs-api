@@ -9,7 +9,7 @@ describe('4 - Sua aplicação deve ter o endpoint GET `/user/:id`', () => {
     shell.exec('npx sequelize-cli db:create && npx sequelize-cli db:migrate $');
     shell.exec('npx sequelize-cli db:seed:all $');
   });
-
+// validado
   it('Será validado que é possível listar um usuário específico com sucesso', async () => {
     let token;
     await frisby
@@ -45,7 +45,7 @@ describe('4 - Sua aplicação deve ter o endpoint GET `/user/:id`', () => {
         expect(result.image).toBe('https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg');
       });
   });
-
+// validado
   it('Será validado que não é possível listar um usuário inexistente', async () => {
     let token;
     await frisby
@@ -78,7 +78,7 @@ describe('4 - Sua aplicação deve ter o endpoint GET `/user/:id`', () => {
         expect(result.message).toBe('User does not exist');
       });
   });
-
+// middleware já colocado na rota
   it('Será validado que não é possível listar um determinado usuário sem o token na requisição', async () => {
     await frisby
       .setup({
@@ -96,7 +96,7 @@ describe('4 - Sua aplicação deve ter o endpoint GET `/user/:id`', () => {
         expect(json.message).toBe('Token not found');
       });
   });
-
+// meddleware colocado na rota
   it('Será validado que não é possível listar um determinado usuário com o token inválido', async () => {
     await frisby
       .setup({
