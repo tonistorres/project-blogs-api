@@ -2,14 +2,14 @@ const frisby = require('frisby');
 const shell = require('shelljs');
 
 const url = 'http://localhost:3000';
-
+// validado
 describe('5 - Sua aplicação deve ter o endpoint POST `/categories`', () => {
   beforeEach(() => {
     shell.exec('npx sequelize-cli db:drop');
     shell.exec('npx sequelize-cli db:create && npx sequelize-cli db:migrate $');
     shell.exec('npx sequelize-cli db:seed:all $');
   });
-
+// validado
   it('Será validado que é possivel cadastrar uma categoria com sucesso', async () => {
     let token;
     await frisby
@@ -43,7 +43,7 @@ describe('5 - Sua aplicação deve ter o endpoint POST `/categories`', () => {
         expect(json.name).toBe('Música');
       });
   });
-
+// validado
   it('Será validado que não é possivel cadastrar uma categoria sem o campo name', async () => {
     let token;
     await frisby
