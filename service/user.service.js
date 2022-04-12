@@ -2,6 +2,11 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const { User } = require('../models');
 
+const getAllServiceUser = async () => {
+  const users = await User.findAll();        
+  return users;
+};
+
 const createServiceUser = async (user) => {
        try {
        const created = await User.create(user);    
@@ -11,14 +16,10 @@ const createServiceUser = async (user) => {
     }
   };
 
-  module.exports = { 
-    createServiceUser,
-};
-
 const getUserLoginService = async (user) => {
    try {     
     const SECRET = process.env.JWT_SECRET; 
-    const jwtConfig = { expiresIn: '15m', algorithm: 'HS256' };
+    const jwtConfig = { expiresIn: '2h', algorithm: 'HS256' };
     const autthorization = await User
     .findOne({ where: { email: user.email, password: user.password } });
     if (!autthorization) {
@@ -35,4 +36,5 @@ const getUserLoginService = async (user) => {
 module.exports = {
   createServiceUser,
   getUserLoginService,
+  getAllServiceUser,
 };

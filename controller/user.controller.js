@@ -2,6 +2,18 @@ const UserService = require('../service/user.service');
 
 const ERRO_SERVIDOR = 'Erro no Servidor';
 
+const getAllUserController = async (_req, res) => {
+  try {
+    const users = await UserService.getAllServiceUser();
+    return res.status(200).send(users);
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: ERRO_SERVIDOR });
+  }
+};
+
 const createUserController = async (req, res) => {
     try {
       const user = await UserService.createServiceUser(req.body);
@@ -31,4 +43,5 @@ const getUserLoginController = async (req, res) => {
   module.exports = {
     createUserController,
     getUserLoginController,
+    getAllUserController,
   };

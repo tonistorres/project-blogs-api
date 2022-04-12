@@ -3,10 +3,14 @@ const UserController = require('../controller/user.controller');
 const { checkEmail } = require('../middleware/middlEmailExist');
 const { validateDisplayName } = require('../middleware/middlDisplayName');
 const { checkPassWord } = require('../middleware/middlPassWord');
+const Authorization = require('../middleware/middlAuthorization');
 
 const router = express.Router();
 
 router
+
+.get('/', Authorization, UserController.getAllUserController)
+
 .post('/',
  checkEmail,
  checkPassWord,
