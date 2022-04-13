@@ -15,8 +15,8 @@
             id: { type: DataTypes.INTEGER, primaryKey: true },
             title: DataTypes.STRING,
             content: DataTypes.STRING,
-            createdAt: { type: DataTypes.DATE, field: 'published' },
-            updatedAt: { type: DataTypes.DATE, field: 'updated' },  
+            published: { type: DataTypes.DATE, field: 'published' },
+            updated: { type: DataTypes.DATE, field: 'updated' },  
             userId: { type: DataTypes.INTEGER, primaryKey: true },
           },
           { timestamps: false, tableName: 'BlogPosts' });
