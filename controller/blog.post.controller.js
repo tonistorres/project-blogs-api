@@ -14,6 +14,21 @@ const getAllBlogPostController = async (req, res) => {
   }
 };
 
+const getByIdBlogPostController = async (req, res) => {
+  try {
+    const user = await BlogPostService.getByIdBlogPostService(req.params);
+    if (!user) {
+    return res.status(404).json({ message: 'Post does not exist' });
+    }
+    return res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: ERRO_SERVIDOR });
+  }
+};
+
 const createBlogPostController = async (req, res) => {
   try {
     const postInfo = await BlogPostService.createServiceBlogPost(req.body, req.user.idUser);
@@ -30,4 +45,5 @@ const createBlogPostController = async (req, res) => {
 module.exports = {
     getAllBlogPostController,
     createBlogPostController,
+    getByIdBlogPostController,
 };

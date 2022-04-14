@@ -13,6 +13,9 @@ MiddleCheck.checkBlogPost,
 BlogPost.createBlogPostController)
 
 .get('/', Authorization,
-BlogPost.getAllBlogPostController);
+BlogPost.getAllBlogPostController)
+
+.get('/:id', Authorization,
+BlogPost.getByIdBlogPostController);
  
 module.exports = router;
