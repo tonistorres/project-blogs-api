@@ -49,6 +49,7 @@ describe('7 - Sua aplicação deve ter o endpoint POST `/post`', () => {
       });
   });
 
+// validado
   it('Será validado que não é possível cadastrar um blogpost sem o campo `title`', async () => {
     let token;
     await frisby
@@ -83,7 +84,7 @@ describe('7 - Sua aplicação deve ter o endpoint POST `/post`', () => {
         expect(json.message).toBe('"title" is required');
       });
   });
-
+//
   it('Será validado que não é possível cadastrar um blogpost sem o campo `content`', async () => {
     let token;
     await frisby
@@ -118,7 +119,7 @@ describe('7 - Sua aplicação deve ter o endpoint POST `/post`', () => {
         expect(json.message).toBe('"content" is required');
       });
   });
-
+// validado
   it('Será validado que não é possível cadastrar um blogpost sem o campo `categoryIds`', async () => {
     let token;
     await frisby

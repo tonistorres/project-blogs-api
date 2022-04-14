@@ -1,11 +1,18 @@
 const express = require('express');
 const Authorization = require('../middleware/middlAuthorization');
+const MiddleCheck = require('../middleware/blogpost/middlValidationBlogPost');
 const BlogPost = require('../controller/blog.post.controller');
 
 const router = express.Router();
 
 router
- .get('/', Authorization,
-  BlogPost.getAllBlogPostController);
+
+.post('/',
+Authorization,
+MiddleCheck.checkBlogPost,
+BlogPost.createBlogPostController)
+
+.get('/', Authorization,
+BlogPost.getAllBlogPostController);
  
 module.exports = router;
